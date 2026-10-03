@@ -61,3 +61,25 @@ A modern, high-performance personal portfolio website built with **Next.js 15**,
 npm run build
 npm run start
 ```
+
+## 🐳 Running with Docker
+
+### Using Docker Compose (Recommended)
+
+```bash
+docker compose up --build -d
+```
+Then access the site at [http://localhost:3000](http://localhost:3000).
+
+### Using Docker CLI
+
+1. Build the image:
+   ```bash
+   docker build -t rafiz-portfolio .
+   ```
+
+2. Run the container:
+   ```bash
+   docker run -d -p 3000:3000 --name rafiz-portfolio-app rafiz-portfolio
+   ```
+
