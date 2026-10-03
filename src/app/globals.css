@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Royal Cobalt & Electric Violet Palette (Silicon Valley Modern Tech) */
+  --bg-main: #050814;
+  --bg-secondary: #090e23;
+  --bg-tertiary: #0e1738;
+  --bg-card: rgba(11, 18, 42, 0.78);
+  --bg-card-hover: rgba(18, 28, 64, 0.92);
+  
+  --border-subtle: rgba(96, 165, 250, 0.12);
+  --border-accent: rgba(139, 92, 246, 0.38);
+  --border-cobalt: rgba(37, 99, 235, 0.45);
+  
+  /* Primary Royal Cobalt */
+  --primary: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-dark: #1d4ed8;
+  --primary-glow: rgba(37, 99, 235, 0.4);
+  
+  /* Electric Violet */
+  --violet: #8b5cf6;
+  --violet-light: #c084fc;
+  --violet-dark: #6d28d9;
+  --violet-glow: rgba(139, 92, 246, 0.35);
+  
+  /* Ice Sky Blue */
+  --ice: #38bdf8;
+  --ice-glow: rgba(56, 189, 248, 0.3);
+  
+  /* Accent States */
+  --emerald: #10b981;
+  --amber: #f59e0b;
+  --rose: #f43f5e;
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --font-display: 'Outfit', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+/* Alternate Theme: Emerald Matrix */
+[data-theme="emerald"] {
+  --bg-main: #040d0a;
+  --bg-secondary: #071712;
+  --bg-tertiary: #0c241c;
+  --bg-card: rgba(8, 25, 19, 0.82);
+  --bg-card-hover: rgba(12, 38, 29, 0.94);
+  --border-subtle: rgba(16, 185, 129, 0.15);
+  --border-accent: rgba(52, 211, 153, 0.4);
+  --border-cobalt: rgba(16, 185, 129, 0.45);
+  --primary: #059669;
+  --primary-light: #34d399;
+  --primary-glow: rgba(16, 185, 129, 0.4);
+  --violet: #10b981;
+  --violet-light: #6ee7b7;
+  --ice: #2dd4bf;
+}
+
+/* Alternate Theme: Champagne Gold & Obsidian */
+[data-theme="gold"] {
+  --bg-main: #0a0805;
+  --bg-secondary: #141009;
+  --bg-tertiary: #201a10;
+  --bg-card: rgba(22, 17, 10, 0.82);
+  --bg-card-hover: rgba(34, 27, 16, 0.94);
+  --border-subtle: rgba(245, 158, 11, 0.15);
+  --border-accent: rgba(251, 191, 36, 0.4);
+  --border-cobalt: rgba(217, 119, 6, 0.45);
+  --primary: #d97706;
+  --primary-light: #fbbf24;
+  --primary-glow: rgba(245, 158, 11, 0.4);
+  --violet: #f59e0b;
+  --violet-light: #fde68a;
+  --ice: #fbbf24;
+}
+
+/* Alternate Theme: Crimson Sunset */
+[data-theme="crimson"] {
+  --bg-main: #0d0608;
+  --bg-secondary: #18090d;
+  --bg-tertiary: #270f16;
+  --bg-card: rgba(26, 10, 15, 0.82);
+  --bg-card-hover: rgba(40, 16, 24, 0.94);
+  --border-subtle: rgba(244, 63, 94, 0.15);
+  --border-accent: rgba(251, 113, 133, 0.4);
+  --border-cobalt: rgba(225, 29, 72, 0.45);
+  --primary: #e11d48;
+  --primary-light: #fb7185;
+  --primary-glow: rgba(244, 63, 94, 0.4);
+  --violet: #f43f5e;
+  --violet-light: #fda4af;
+  --ice: #fb923c;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Background Atmosphere Glows - Royal Cobalt & Electric Violet */
+body::before {
+  content: '';
+  position: fixed;
+  top: -15%;
+  left: 15%;
+  width: 65vw;
+  height: 65vw;
+  max-width: 950px;
+  max-height: 950px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, rgba(139, 92, 246, 0.12) 40%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(90px);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -20%;
+  right: 5%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 800px;
+  max-height: 800px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, rgba(56, 189, 248, 0.08) 50%, transparent 75%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(100px);
+}
+
+/* Typography Utility */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid var(--border-accent);
+  color: var(--primary-light);
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3rem;
+  }
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+/* Gradient Text - Royal Cobalt & Electric Violet */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 10%, #bfdbfe 35%, #60a5fa 65%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphic Cards */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(96, 165, 250, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  background: var(--bg-card-hover);
+  box-shadow: 0 22px 45px -15px rgba(37, 99, 235, 0.25), 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 22px rgba(37, 99, 235, 0.45);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.6);
+  background: linear-gradient(135deg, #1d4ed8 0%, #4338ca 50%, #6d28d9 100%);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border-color: rgba(96, 165, 250, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25);
+}
+
+.btn-cyan, .btn-violet {
+  background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}
+
+.btn-cyan:hover, .btn-violet:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.badge-primary {
+  background: rgba(37, 99, 235, 0.18);
+  border-color: rgba(96, 165, 250, 0.35);
+  color: #93c5fd;
+}
+
+.badge-cyan {
+  background: rgba(139, 92, 246, 0.18);
+  border-color: rgba(192, 132, 252, 0.35);
+  color: #d8b4fe;
+}
+
+.badge-emerald {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+}
+
+.badge-amber {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #fcd34d;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050814;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2b52;
+  border-radius: 5px;
+  border: 2px solid #050814;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b508f;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(139, 92, 246, 0.65);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+@keyframes floatAnim {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.float-slow {
+  animation: floatAnim 6s ease-in-out infinite;
+}
